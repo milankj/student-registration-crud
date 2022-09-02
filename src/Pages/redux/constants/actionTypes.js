@@ -1,0 +1,4 @@
+export const actionTypes = {
+    STUDENT_LIST : "STUDENT_LIST",
+    REMOVE_STUDENT_LIST : "REMOVE_STUDENT_LIST"
+}
