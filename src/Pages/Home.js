@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios';
+import {getStudent,deleteStudent} from '../services'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -11,17 +11,20 @@ function Home() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get(`https://my-json-server.typicode.com/milankj/student-registration/students`)
-            .then(res => {
+       
+            getStudent().then(res => {
+
                 dispatch(addStudentList(res.data))
             })
     }, [dispatch])
     console.log(studentList[0])
     const handleDelete = (id) => {
         dispatch(removeStudentList(id))
+        deleteStudent(id).then(res=>console.log(res))
     }
     return (
         <div className='container'>
+            <h1 className='text-center mt-5'>Student List</h1>
             <div
                 className='
                     mt-5

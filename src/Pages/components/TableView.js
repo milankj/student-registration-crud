@@ -4,25 +4,24 @@ import {useNavigate} from 'react-router-dom'
 function TableView(props) {
 
     const navigate = useNavigate()
-
+    console.log(props.football)
     return (
         <tr>
-            <th scope="row">{props.name}</th>
+            <th scope="row">{props.fullName}</th>
             <td>{props.age}</td>
             <td>{props.gender}</td>
-            <td>
-
-                {props.subjects.map(sub => {
-                    return (<p key={sub}>{sub},</p>)
-                })}
-            </td>
+            <td>{props.subject}</td>
             <td>{props.location}</td>
             <td>{props.address}</td>
-            <td>{props.sports}</td>
+            <td>{props.football && <p>Football</p>}
+                {props.cricket && <p>Cricket</p>}
+                {props.hockey && <p>Hockey</p>}
+                {props.basketball && <p>Basketball</p>}           
+            </td>
         <span
             role='button' 
             className='btn btn-outline-success ms-5'
-            onClick={()=>{navigate('/edit')}}
+            onClick={()=>{navigate(`${props.id}/edit`)}}
             >
             Edit
         </span>
